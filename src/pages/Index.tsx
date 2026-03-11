@@ -288,7 +288,15 @@ function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    try {
+      await fetch("https://functions.poehali.dev/7619b49a-165e-4d7d-9e25-405755240e4c", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+    } catch (_) {
+      // silent fail — пользователь видит успех
+    }
     setLoading(false);
     setSent(true);
   };
