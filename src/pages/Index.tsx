@@ -183,7 +183,7 @@ function Calculator() {
   const [finish, setFinish] = useState<"start" | "comfort" | "premium">("comfort");
 
   const rates = { start: 35000, comfort: 55000, premium: 80000 };
-  const floorCoeff = floors === 1 ? 1 : floors === 2 ? 0.95 : 0.9;
+  const floorCoeff = floors === 1 ? 1 : floors === 2 ? 1.3 : 1.3 * 1.3;
   const total = Math.round(area * rates[finish] * floorCoeff);
   const totalFormatted = total.toLocaleString("ru-RU");
 
