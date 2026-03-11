@@ -476,10 +476,18 @@ const Index = () => {
               <br />
               <em className="italic text-[var(--brick-light)]">простоит века</em>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed mb-10 animate-fade-up opacity-0 delay-300">
+            <p className="text-white/70 text-lg leading-relaxed mb-6 animate-fade-up opacity-0 delay-300">
               Строим кирпичные дома под ключ в Краснодарском крае. Фиксированная цена, чёткие сроки, 10 лет гарантии.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-400">
+            <p className="animate-fade-up opacity-0 delay-400 mb-10">
+              <span
+                className="text-xl md:text-2xl font-light italic text-[var(--brick-light)]"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              >
+                «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
+              </span>
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
               <button className="btn-brick" onClick={() => scrollTo("calculator")}>Рассчитать стоимость</button>
               <button className="btn-outline" onClick={() => scrollTo("portfolio")}>Смотреть работы</button>
             </div>
