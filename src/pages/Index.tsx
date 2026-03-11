@@ -147,21 +147,21 @@ const PRICES = [
 const REVIEWS = [
   {
     name: "Андрей Миронов",
-    city: "Краснодар",
+    city: "Москва",
     text: "Строили дом 180 м². Сдали на 2 недели раньше срока. Качество кирпичной кладки — идеальное. Буду рекомендовать всем знакомым.",
     rating: 5,
     year: "2025",
   },
   {
     name: "Елена Соколова",
-    city: "Ростов-на-Дону",
+    city: "Московская область",
     text: "Очень приятная компания. Всё объяснили, ни разу не обманули. Дом стоит второй год — никаких проблем. Зимой тепло, летом прохладно.",
     rating: 5,
     year: "2025",
   },
   {
     name: "Дмитрий Павлов",
-    city: "Краснодарский край",
+    city: "Подмосковье",
     text: "Брали тариф «Премиум». Въехали сразу после сдачи — ничего доделывать не пришлось. Цена полностью соответствует качеству.",
     rating: 5,
     year: "2024",
@@ -409,7 +409,7 @@ const Index = () => {
             <a
               href="tel:+79057108890"
               className="text-sm font-medium transition-colors"
-              style={{ color: scrolled ? "var(--brick)" : "white" }}
+              style={{ color: scrolled ? "var(--arch-accent)" : "white" }}
             >
               +7 905 710 88 90
             </a>
@@ -461,28 +461,42 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=85')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--stone)]/90 via-[var(--stone)]/60 to-transparent" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(105deg, rgba(20,20,20,0.92) 0%, rgba(20,20,20,0.65) 55%, rgba(20,20,20,0.15) 100%)" }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-          <div className="max-w-xl">
-            <p className="section-label text-[var(--brick-light)] mb-6 animate-fade-in opacity-0 delay-100">
-              Строительство кирпичных домов
-            </p>
+        {/* Архитектурная вертикальная линия */}
+        <div className="absolute left-[calc(50%-1px)] top-0 bottom-0 hidden xl:block" style={{ width: "1px", background: "rgba(255,255,255,0.06)" }} />
+
+        {/* Координатная сетка (декор) */}
+        <div className="absolute top-24 right-12 hidden lg:flex flex-col gap-1 opacity-20">
+          {["N 55°45′", "E 37°37′"].map((t, i) => (
+            <span key={i} className="text-white text-xs tracking-widest" style={{ fontFamily: "monospace" }}>{t}</span>
+          ))}
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+          <div className="max-w-2xl">
+            {/* Архитектурный номер проекта */}
+            <div className="flex items-center gap-4 mb-8 animate-fade-in opacity-0 delay-100">
+              <span className="text-white/25 text-xs tracking-[0.25em] uppercase" style={{ fontFamily: "monospace" }}>ПРОЕКТ № 001</span>
+              <div style={{ width: "40px", height: "1px", background: "var(--arch-accent)" }} />
+              <span className="section-label">Строительство кирпичных домов</span>
+            </div>
             <h1
-              className="text-5xl md:text-7xl font-light text-white leading-tight mb-8 animate-fade-up opacity-0 delay-200"
+              className="text-5xl md:text-7xl font-light text-white leading-[1.05] mb-8 animate-fade-up opacity-0 delay-200"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Дом, который
               <br />
-              <em className="italic text-[var(--brick-light)]">простоит века</em>
+              <em className="italic" style={{ color: "var(--arch-accent)" }}>простоит века</em>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed mb-6 animate-fade-up opacity-0 delay-300">
-              Строим кирпичные дома под ключ в Краснодарском крае. Фиксированная цена, чёткие сроки, 10 лет гарантии.
+            <p className="text-white/60 text-base leading-relaxed mb-6 animate-fade-up opacity-0 delay-300 max-w-lg"
+               style={{ letterSpacing: "0.01em" }}>
+              Строим кирпичные дома под ключ в Московской области. Фиксированная цена, чёткие сроки, 10 лет гарантии.
             </p>
             <p className="animate-fade-up opacity-0 delay-400 mb-10">
               <span
-                className="text-xl md:text-2xl font-light italic text-[var(--brick-light)]"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                className="text-lg md:text-xl font-light italic"
+                style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--arch-accent)", opacity: 0.9 }}
               >
                 «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
               </span>
@@ -494,9 +508,9 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 animate-fade-in opacity-0 delay-600">
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <Icon name="ChevronDown" size={16} className="animate-bounce" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-fade-in opacity-0 delay-600">
+          <div style={{ width: "1px", height: "32px", background: "rgba(255,255,255,0.2)" }} className="animate-bounce" />
+          <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
         </div>
       </section>
 
@@ -526,7 +540,7 @@ const Index = () => {
                 14 лет строим<br /><em className="italic">настоящие дома</em>
               </h2>
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                ДомДзен — семейная строительная компания из Краснодарского края. Мы специализируемся
+                ДомДзен — семейная строительная компания из Московской области. Мы специализируемся
                 исключительно на кирпичном строительстве, потому что верим: настоящий дом строится из кирпича.
               </p>
               <p className="text-[var(--text-muted)] leading-relaxed mb-8">
@@ -762,7 +776,7 @@ const Index = () => {
               <div className="space-y-5">
                 {[
                   { icon: "Phone", label: "Телефон", value: "+7 905 710 88 90", href: "tel:+79057108890" },
-                  { icon: "Mail", label: "Email", value: "domdzen@gmail.com", href: "mailto:domdzen@gmail.com" },
+                  { icon: "Mail", label: "Email", value: "pruddzen@gmail.com", href: "mailto:pruddzen@gmail.com" },
                 ].map((c, i) => (
                   <a key={i} href={c.href} className="flex items-center gap-4 group">
                     <div className="w-10 h-10 bg-[var(--sand)] flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--brick)] transition-colors">
@@ -775,7 +789,7 @@ const Index = () => {
                   </a>
                 ))}
                 {[
-                  { icon: "MapPin", label: "Регион", value: "Краснодарский край" },
+                  { icon: "MapPin", label: "Регион", value: "Московская область" },
                   { icon: "Clock", label: "Режим работы", value: "Пн–Сб: 9:00 – 19:00" },
                 ].map((c, i) => (
                   <div key={i} className="flex items-center gap-4">
