@@ -347,9 +347,232 @@ function ContactForm() {
         {loading ? "Отправляем..." : "Отправить заявку"}
       </button>
       <p className="text-xs text-[var(--text-muted)] text-center">
-        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+        Нажимая кнопку, вы соглашаетесь с{" "}
+        <button
+          type="button"
+          onClick={() => {
+            document.dispatchEvent(new CustomEvent("open-privacy"));
+          }}
+          className="underline underline-offset-2 hover:no-underline transition-all"
+          style={{ color: "var(--arch-accent)" }}
+        >
+          политикой обработки персональных данных
+        </button>
       </p>
     </form>
+  );
+}
+
+// ─── Cookie Banner ────────────────────────────────────────────────────────────
+
+function CookieBanner({ onPolicy }: { onPolicy: () => void }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!localStorage.getItem("cookie_accepted")) {
+      setTimeout(() => setVisible(true), 1200);
+    }
+  }, []);
+
+  const accept = () => {
+    localStorage.setItem("cookie_accepted", "1");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 animate-fade-in opacity-0"
+         style={{ animationFillMode: "forwards" }}>
+      <div className="bg-[var(--arch-black)] border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <Icon name="Cookie" fallback="Info" size={16} className="text-[var(--arch-accent)] flex-shrink-0 mt-0.5" />
+            <p className="text-white/60 text-xs leading-relaxed">
+              Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с{" "}
+              <button onClick={onPolicy} className="text-[var(--arch-accent)] underline underline-offset-2 hover:no-underline transition-all">
+                политикой обработки персональных данных
+              </button>.
+            </p>
+          </div>
+          <div className="flex gap-3 flex-shrink-0">
+            <button
+              onClick={onPolicy}
+              className="text-white/40 hover:text-white/70 text-xs uppercase tracking-wider transition-colors"
+            >
+              Подробнее
+            </button>
+            <button onClick={accept} className="btn-brick py-2 px-5 text-xs">
+              Принять
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Privacy Policy Modal ─────────────────────────────────────────────────────
+
+function PrivacyModal({ onClose }: { onClose: () => void }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-6">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative bg-white w-full sm:max-w-2xl max-h-[90vh] overflow-y-auto z-10">
+        {/* Header */}
+        <div className="sticky top-0 bg-white border-b border-[var(--arch-rule)] px-8 py-5 flex items-center justify-between">
+          <div>
+            <p className="section-label mb-1">Документ</p>
+            <h3 className="text-xl font-light" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Политика конфиденциальности
+            </h3>
+          </div>
+          <button onClick={onClose} className="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors p-1">
+            <Icon name="X" size={20} />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="px-8 py-8 space-y-6 text-sm text-[var(--text-muted)] leading-relaxed">
+          <p className="text-xs text-[var(--text-muted)]">Редакция от 1 января 2026 г.</p>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              1. Общие положения
+            </h4>
+            <p>
+              Настоящая политика конфиденциальности (далее — Политика) действует в отношении всей информации,
+              которую ООО «ДомДзен» (далее — Компания) может получить о пользователе в ходе использования
+              сайта domdzen.ru и связанных с ним сервисов.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              2. Какие данные мы собираем
+            </h4>
+            <ul className="space-y-1 list-none">
+              {[
+                "Имя и контактный телефон при заполнении формы заявки",
+                "Email-адрес при добровольном указании",
+                "Данные об устройстве: тип браузера, IP-адрес, операционная система",
+                "Cookie-файлы и данные о посещённых страницах",
+                "Источник перехода на сайт",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-[var(--arch-accent)] mt-0.5">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              3. Цели обработки персональных данных
+            </h4>
+            <ul className="space-y-1 list-none">
+              {[
+                "Связь с пользователем по его запросу",
+                "Обработка заявок на расчёт и строительство",
+                "Улучшение работы и навигации сайта",
+                "Анализ аудитории в обезличенном виде",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-[var(--arch-accent)] mt-0.5">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              4. Файлы cookie
+            </h4>
+            <p className="mb-3">
+              Сайт использует файлы cookie — небольшие текстовые файлы, сохраняемые в браузере. Они необходимы для:
+            </p>
+            <ul className="space-y-1 list-none mb-3">
+              {[
+                "Запоминания ваших предпочтений при повторном посещении",
+                "Корректной работы форм и калькулятора",
+                "Сбора анонимной статистики посещаемости (Яндекс.Метрика)",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-[var(--arch-accent)] mt-0.5">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Вы можете отключить cookie в настройках браузера. Это может повлиять на работу отдельных функций сайта.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              5. Передача данных третьим лицам
+            </h4>
+            <p>
+              Компания не передаёт персональные данные третьим лицам, за исключением случаев,
+              предусмотренных законодательством РФ, а также в целях исполнения договора со стороны
+              подрядчиков (например, сервис отправки email).
+            </p>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              6. Права пользователя
+            </h4>
+            <p className="mb-2">В соответствии с Федеральным законом № 152-ФЗ «О персональных данных» вы вправе:</p>
+            <ul className="space-y-1 list-none">
+              {[
+                "Получить информацию об обработке ваших данных",
+                "Потребовать уточнения, блокировки или уничтожения данных",
+                "Отозвать согласие на обработку персональных данных",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-[var(--arch-accent)] mt-0.5">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h4 className="text-base font-medium text-[var(--text-main)] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              7. Контакты
+            </h4>
+            <p>
+              По вопросам обработки персональных данных обращайтесь:{" "}
+              <a href="mailto:pruddzen@gmail.com" className="text-[var(--arch-accent)] underline underline-offset-2">
+                pruddzen@gmail.com
+              </a>
+            </p>
+          </section>
+
+          <div className="border-t border-[var(--arch-rule)] pt-6">
+            <p className="text-xs">
+              Используя сайт, вы подтверждаете, что ознакомились с настоящей Политикой и даёте согласие
+              на обработку ваших персональных данных в соответствии с её условиями.
+            </p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="sticky bottom-0 bg-white border-t border-[var(--arch-rule)] px-8 py-4 flex justify-end">
+          <button onClick={onClose} className="btn-brick py-2 px-8">
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -358,11 +581,18 @@ function ContactForm() {
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [policyOpen, setPolicyOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const handler = () => setPolicyOpen(true);
+    document.addEventListener("open-privacy", handler);
+    return () => document.removeEventListener("open-privacy", handler);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -372,6 +602,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Golos Text', sans-serif" }}>
+      {policyOpen && <PrivacyModal onClose={() => setPolicyOpen(false)} />}
+      <CookieBanner onPolicy={() => setPolicyOpen(true)} />
 
       {/* ── NAV ── */}
       <header
@@ -834,7 +1066,15 @@ const Index = () => {
                 </a>
               ))}
             </div>
-            <div className="text-white/30 text-xs">© 2026 ДомДзен</div>
+            <div className="flex items-center gap-4">
+              <span className="text-white/30 text-xs">© 2026 ДомДзен</span>
+              <button
+                onClick={() => setPolicyOpen(true)}
+                className="text-white/30 hover:text-white/60 text-xs transition-colors underline underline-offset-2"
+              >
+                Политика конфиденциальности
+              </button>
+            </div>
           </div>
         </div>
       </footer>
