@@ -811,9 +811,10 @@ const Index = () => {
               </div>
             </div>
             <div className="relative flex items-center justify-center bg-[var(--sand)] aspect-[4/5]">
-              <div className="text-center">
-                <div className="text-4xl font-light mb-1" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--brick)" }}>287</div>
-                <div className="text-xs uppercase tracking-wider text-[var(--text-muted)]">Домов построено</div>
+              <div className="text-center px-8">
+                <div className="text-[120px] md:text-[160px] font-light leading-none mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--brick)" }}>287</div>
+                <div style={{ width: "48px", height: "1px", background: "var(--brick)", margin: "0 auto 16px" }} />
+                <div className="text-sm uppercase tracking-[0.2em] text-[var(--text-muted)]">Домов построено</div>
               </div>
             </div>
           </div>
