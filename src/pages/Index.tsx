@@ -706,36 +706,51 @@ const Index = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
-          <div className="max-w-2xl">
-            {/* Архитектурный номер проекта */}
-            <div className="flex items-center gap-4 mb-8 animate-fade-in opacity-0 delay-100">
-              <span className="text-white/25 text-xs tracking-[0.25em] uppercase" style={{ fontFamily: "monospace" }}>ПРОЕКТ № 001</span>
-              <div style={{ width: "40px", height: "1px", background: "var(--arch-accent)" }} />
-              <span className="section-label">Строительство кирпичных домов</span>
-            </div>
-            <h1
-              className="text-5xl md:text-7xl font-light text-white leading-[1.05] mb-8 animate-fade-up opacity-0 delay-200"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Дом, который
-              <br />
-              <em className="italic" style={{ color: "var(--arch-accent)" }}>простоит века</em>
-            </h1>
-            <p className="text-white/60 text-base leading-relaxed mb-6 animate-fade-up opacity-0 delay-300 max-w-lg"
-               style={{ letterSpacing: "0.01em" }}>
-              Строим кирпичные дома под ключ в Московской области. Фиксированная цена, чёткие сроки, 10 лет гарантии.
-            </p>
-            <p className="animate-fade-up opacity-0 delay-400 mb-10">
-              <span
-                className="text-lg md:text-xl font-light italic"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--arch-accent)", opacity: 0.9 }}
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Текст */}
+            <div className="flex-1 max-w-2xl">
+              <div className="flex items-center gap-4 mb-8 animate-fade-in opacity-0 delay-100">
+                <span className="text-white/25 text-xs tracking-[0.25em] uppercase" style={{ fontFamily: "monospace" }}>ПРОЕКТ № 001</span>
+                <div style={{ width: "40px", height: "1px", background: "var(--arch-accent)" }} />
+                <span className="section-label">Строительство кирпичных домов</span>
+              </div>
+              <h1
+                className="text-5xl md:text-7xl font-light text-white leading-[1.05] mb-8 animate-fade-up opacity-0 delay-200"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
-              </span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
-              <button className="btn-brick" onClick={() => scrollTo("calculator")}>Рассчитать стоимость</button>
-              <button className="btn-outline" onClick={() => scrollTo("portfolio")}>Смотреть работы</button>
+                Дом, который
+                <br />
+                <em className="italic" style={{ color: "var(--arch-accent)" }}>простоит века</em>
+              </h1>
+              <p className="text-white/60 text-base leading-relaxed mb-6 animate-fade-up opacity-0 delay-300 max-w-lg"
+                 style={{ letterSpacing: "0.01em" }}>
+                Строим кирпичные дома под ключ в Московской области. Фиксированная цена, чёткие сроки, 10 лет гарантии.
+              </p>
+              <p className="animate-fade-up opacity-0 delay-400 mb-10">
+                <span
+                  className="text-lg md:text-xl font-light italic"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--arch-accent)", opacity: 0.9 }}
+                >
+                  «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
+                </span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
+                <button className="btn-brick" onClick={() => scrollTo("calculator")}>Рассчитать стоимость</button>
+                <button className="btn-outline" onClick={() => scrollTo("portfolio")}>Смотреть работы</button>
+              </div>
+            </div>
+
+            {/* Картинка справа */}
+            <div className="hidden lg:block flex-shrink-0 w-[480px] animate-fade-up opacity-0 delay-300">
+              <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.7)" }}>
+                <img
+                  src="https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/c948a777-89b8-4f31-baa9-be6e1f8d17fe.jpg"
+                  alt="Современный кирпичный дом"
+                  className="w-full h-[520px] object-cover"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 60%, rgba(20,20,20,0.4) 100%)" }} />
+              </div>
+              <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border border-white/10 -z-10" />
             </div>
           </div>
         </div>
