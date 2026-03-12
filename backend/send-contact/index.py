@@ -37,7 +37,7 @@ def handler(event: dict, context) -> dict:
     smtp_port = int(os.environ.get("SMTP_PORT", "587"))
     smtp_user = os.environ.get("SMTP_USER", "")
     smtp_pass = os.environ.get("SMTP_PASS", "")
-    to_email = "ruslan39985@gmail.com"
+    to_email = "ruslan399885@gmail.com"
 
     html_body = f"""
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
