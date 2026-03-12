@@ -688,54 +688,61 @@ const Index = () => {
       {menuOpen && <div className="fixed inset-0 bg-black/30 z-40" onClick={() => setMenuOpen(false)} />}
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=85')` }}
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(105deg, rgba(20,20,20,0.92) 0%, rgba(20,20,20,0.65) 55%, rgba(20,20,20,0.15) 100%)" }} />
-
-        {/* Архитектурная вертикальная линия */}
-        <div className="absolute left-[calc(50%-1px)] top-0 bottom-0 hidden xl:block" style={{ width: "1px", background: "rgba(255,255,255,0.06)" }} />
-
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#141414]">
         {/* Координатная сетка (декор) */}
-        <div className="absolute top-24 right-12 hidden lg:flex flex-col gap-1 opacity-20">
+        <div className="absolute top-24 left-12 hidden lg:flex flex-col gap-1 opacity-20 z-10">
           {["N 55°45′", "E 37°37′"].map((t, i) => (
             <span key={i} className="text-white text-xs tracking-widest" style={{ fontFamily: "monospace" }}>{t}</span>
           ))}
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
-          <div className="max-w-2xl">
-            {/* Архитектурный номер проекта */}
-            <div className="flex items-center gap-4 mb-8 animate-fade-in opacity-0 delay-100">
-              <span className="text-white/25 text-xs tracking-[0.25em] uppercase" style={{ fontFamily: "monospace" }}>ПРОЕКТ № 001</span>
-              <div style={{ width: "40px", height: "1px", background: "var(--arch-accent)" }} />
-              <span className="section-label">Строительство кирпичных домов</span>
-            </div>
-            <h1
-              className="text-5xl md:text-7xl font-light text-white leading-[1.05] mb-8 animate-fade-up opacity-0 delay-200"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Дом, который
-              <br />
-              <em className="italic" style={{ color: "var(--arch-accent)" }}>простоит века</em>
-            </h1>
-            <p className="text-white/60 text-base leading-relaxed mb-6 animate-fade-up opacity-0 delay-300 max-w-lg"
-               style={{ letterSpacing: "0.01em" }}>
-              Строим кирпичные дома под ключ в Московской области. Фиксированная цена, чёткие сроки, 10 лет гарантии.
-            </p>
-            <p className="animate-fade-up opacity-0 delay-400 mb-10">
-              <span
-                className="text-lg md:text-xl font-light italic"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--arch-accent)", opacity: 0.9 }}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Левая колонка — текст */}
+            <div>
+              <div className="flex items-center gap-4 mb-8 animate-fade-in opacity-0 delay-100">
+                <span className="text-white/25 text-xs tracking-[0.25em] uppercase" style={{ fontFamily: "monospace" }}>ПРОЕКТ № 001</span>
+                <div style={{ width: "40px", height: "1px", background: "var(--arch-accent)" }} />
+                <span className="section-label">Строительство кирпичных домов</span>
+              </div>
+              <h1
+                className="text-5xl md:text-7xl font-light text-white leading-[1.05] mb-8 animate-fade-up opacity-0 delay-200"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
-              </span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
-              <button className="btn-brick" onClick={() => scrollTo("calculator")}>Рассчитать стоимость</button>
-              <button className="btn-outline" onClick={() => scrollTo("portfolio")}>Смотреть работы</button>
+                Дом, который
+                <br />
+                <em className="italic" style={{ color: "var(--arch-accent)" }}>простоит века</em>
+              </h1>
+              <p className="text-white/60 text-base leading-relaxed mb-6 animate-fade-up opacity-0 delay-300 max-w-lg"
+                 style={{ letterSpacing: "0.01em" }}>
+                Строим кирпичные дома под ключ в Московской области. Фиксированная цена, чёткие сроки, 10 лет гарантии.
+              </p>
+              <p className="animate-fade-up opacity-0 delay-400 mb-10">
+                <span
+                  className="text-lg md:text-xl font-light italic"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--arch-accent)", opacity: 0.9 }}
+                >
+                  «Строим дома так, чтоб в них жили внуки —<br className="hidden sm:block" /> и вы в следующей жизни.»
+                </span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
+                <button className="btn-brick" onClick={() => scrollTo("calculator")}>Рассчитать стоимость</button>
+                <button className="btn-outline" onClick={() => scrollTo("portfolio")}>Смотреть работы</button>
+              </div>
+            </div>
+
+            {/* Правая колонка — картинка */}
+            <div className="relative animate-fade-up opacity-0 delay-300 hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.6)" }}>
+                <img
+                  src="https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/a7f3c475-d815-46d5-a87f-918648df71d0.jpg"
+                  alt="Современный кирпичный дом"
+                  className="w-full h-[560px] object-cover"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 60%, rgba(20,20,20,0.5) 100%)" }} />
+              </div>
+              {/* Декоративная рамка */}
+              <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border border-white/10 -z-10" />
             </div>
           </div>
         </div>
