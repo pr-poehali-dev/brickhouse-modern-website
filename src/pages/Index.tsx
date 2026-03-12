@@ -56,46 +56,39 @@ const PROCESS_STEPS = [
 
 const PORTFOLIO = [
   {
-    img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/85a711eb-e382-46d9-9868-cfad7ca29287.jpg",
     title: "Дом в Подмосковье",
     area: "180 м²",
     year: "2025",
     style: "Современный",
   },
   {
-    img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/01258b13-7545-4880-ac65-8d4db7dfd4f2.jpg",
     title: "Загородный коттедж",
     area: "240 м²",
     year: "2025",
     style: "Классический",
   },
   {
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/b5c1b3cd-0e97-45d7-87cf-e8b56c4869bb.jpg",
     title: "Семейный особняк",
     area: "320 м²",
     year: "2024",
     style: "Европейский",
   },
   {
-    img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/6f75a0f3-865c-45dc-b9b8-31a560f70f58.jpg",
     title: "Дом у леса",
     area: "150 м²",
     year: "2024",
     style: "Скандинавский",
   },
   {
-    img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/ba9ee03e-aa51-4e95-a40a-f4452293b912.png",
     title: "Двухэтажный дом",
     area: "210 м²",
     year: "2025",
     style: "Современный",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-    title: "Тихий уголок",
-    area: "165 м²",
-    year: "2024",
-    style: "Минималистичный",
   },
 ];
 
