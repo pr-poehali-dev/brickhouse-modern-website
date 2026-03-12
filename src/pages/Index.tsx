@@ -90,6 +90,13 @@ const PORTFOLIO = [
     year: "2025",
     style: "Современный",
   },
+  {
+    img: "https://cdn.poehali.dev/projects/5f75755e-367e-430f-8c23-6841c04f14fc/bucket/e66c3b10-1bbe-44aa-8efc-0783bb6edcc4.jpg",
+    title: "Тихий уголок",
+    area: "165 м²",
+    year: "2024",
+    style: "Минималистичный",
+  },
 ];
 
 const PRICES = [
