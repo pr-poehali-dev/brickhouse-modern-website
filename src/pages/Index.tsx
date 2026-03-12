@@ -810,15 +810,10 @@ const Index = () => {
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1503594384566-461fe158e797?w=700&q=80"
-                alt="Строительство"
-                className="w-full aspect-[4/5] object-cover"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-[var(--brick)] p-6 text-white max-w-[180px]">
-                <div className="text-4xl font-light mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>287</div>
-                <div className="text-xs text-white/70 uppercase tracking-wider">Домов построено</div>
+            <div className="relative flex items-center justify-center bg-[var(--sand)] aspect-[4/5]">
+              <div className="text-center">
+                <div className="text-4xl font-light mb-1" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--brick)" }}>287</div>
+                <div className="text-xs uppercase tracking-wider text-[var(--text-muted)]">Домов построено</div>
               </div>
             </div>
           </div>
