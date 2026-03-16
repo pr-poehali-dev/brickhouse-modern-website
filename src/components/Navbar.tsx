@@ -52,8 +52,12 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Phone + CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <a href="tel:+79776341129" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">
+              <span className="text-xs text-muted-foreground block leading-none mb-0.5">Менеджер</span>
+              +7 977 634 11 29
+            </a>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
               Записаться
             </Button>
@@ -81,6 +85,10 @@ export function Navbar() {
             </a>
             <a href="#contact" className="block text-base font-medium text-foreground/70 hover:text-foreground">
               Контакты
+            </a>
+            <a href="tel:+79776341129" className="block text-base font-medium text-foreground/70 hover:text-foreground">
+              <span className="text-xs text-muted-foreground">Менеджер</span><br />
+              +7 977 634 11 29
             </a>
             <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
               Записаться

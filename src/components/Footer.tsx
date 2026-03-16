@@ -91,8 +91,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Contacts */}
           <div>
+            <h4 className="font-semibold mb-4">Контакты</h4>
+            <div className="space-y-1 text-sm text-muted-foreground mb-6">
+              <p className="text-xs">Менеджер</p>
+              <a href="tel:+79776341129" className="text-base font-medium text-foreground hover:text-primary transition-colors">
+                +7 977 634 11 29
+              </a>
+            </div>
             <h4 className="font-semibold mb-4">Поддержка</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
