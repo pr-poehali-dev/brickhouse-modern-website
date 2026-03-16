@@ -1020,6 +1020,7 @@ const Index = () => {
               <div className="space-y-5">
                 {[
                   { icon: "Phone", label: "Телефон", value: "+7 905 710 88 90", href: "tel:+79057108890" },
+                  { icon: "Phone", label: "Менеджер", value: "+7 977 634 11 29", href: "tel:+79776341129" },
                   { icon: "Mail", label: "Email", value: "pruddzen@gmail.com", href: "mailto:pruddzen@gmail.com" },
                 ].map((c, i) => (
                   <a key={i} href={c.href} className="flex items-center gap-4 group">
