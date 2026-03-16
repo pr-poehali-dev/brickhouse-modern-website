@@ -639,11 +639,12 @@ const Index = () => {
 
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+79057108890"
-              className="text-sm font-medium transition-colors"
+              href="tel:+79776341129"
+              className="text-sm font-medium transition-colors flex flex-col items-end"
               style={{ color: scrolled ? "var(--arch-accent)" : "white" }}
             >
-              +7 905 710 88 90
+              <span className="text-xs opacity-60 leading-none mb-0.5" style={{ color: scrolled ? "var(--text-muted)" : "rgba(255,255,255,0.6)" }}>Менеджер</span>
+              +7 977 634 11 29
             </a>
             <button className="btn-brick text-sm py-2 px-5" onClick={() => scrollTo("contacts")}>
               Рассчитать дом
@@ -1078,6 +1079,10 @@ const Index = () => {
               ))}
             </div>
             <div className="flex items-center gap-4">
+              <a href="tel:+79776341129" className="text-white/70 hover:text-white text-sm font-medium transition-colors flex flex-col items-end">
+                <span className="text-white/30 text-xs leading-none mb-0.5">Менеджер</span>
+                +7 977 634 11 29
+              </a>
               <span className="text-white/30 text-xs">© 2026 ДомДзен</span>
               <button
                 onClick={() => setPolicyOpen(true)}
