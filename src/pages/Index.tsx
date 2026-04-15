@@ -284,21 +284,25 @@ function ContactForm() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError(false);
     try {
-      await fetch("https://functions.poehali.dev/7619b49a-165e-4d7d-9e25-405755240e4c", {
+      const res = await fetch("https://functions.poehali.dev/7619b49a-165e-4d7d-9e25-405755240e4c", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      if (!res.ok) throw new Error("Server error");
+      setSent(true);
     } catch (_) {
-      // silent fail — пользователь видит успех
+      setError(true);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-    setSent(true);
   };
 
   if (sent) {
@@ -343,6 +347,11 @@ function ContactForm() {
           onChange={(e) => setForm({ ...form, message: e.target.value })}
         />
       </div>
+      {error && (
+        <p className="text-sm text-red-400 text-center">
+          Ошибка отправки. Позвоните нам: <a href="tel:+79057108890" className="underline">+7 905 710 88 90</a>
+        </p>
+      )}
       <button type="submit" className="btn-brick w-full" disabled={loading}>
         {loading ? "Отправляем..." : "Отправить заявку"}
       </button>
